@@ -1,6 +1,6 @@
-// Навигация — фиксированная тонкая панель
+// Навигация — фиксированная тонкая панель + fullscreen overlay на мобильных
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 function Navigation() {
@@ -13,6 +13,23 @@ function Navigation() {
     { path: '/configurator', label: 'Конфигуратор' },
     { path: '/gallery', label: 'Галерея' },
   ];
+
+  // Блокировка скролла body при открытом меню
+  useEffect(function() {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return function() {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
+
+  // Закрытие меню при смене маршрута
+  useEffect(function() {
+    setMenuOpen(false);
+  }, [location.pathname]);
 
   return (
     <nav className="navigation">
