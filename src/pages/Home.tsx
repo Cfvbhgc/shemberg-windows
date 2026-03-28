@@ -1,119 +1,163 @@
+// Главная страница — hero, преимущества, CTA
+
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import QuoteForm from '../components/QuoteForm';
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' as const } },
-};
+function Home() {
+  const advantages = [
+    {
+      icon: '◆',
+      title: 'Немецкое качество',
+      text: 'Профили VEKA и Schüco. Фурнитура Roto и Siegenia.',
+    },
+    {
+      icon: '◇',
+      title: 'Энергоэффективность',
+      text: 'Тройные стеклопакеты с аргоном. Класс A по теплоизоляции.',
+    },
+    {
+      icon: '○',
+      title: 'Монтаж по ГОСТ',
+      text: 'Сертифицированные бригады. Гарантия 10 лет на монтаж.',
+    },
+    {
+      icon: '□',
+      title: 'Собственное производство',
+      text: 'Полный цикл от замера до установки за 7 рабочих дней.',
+    },
+  ];
 
-const Home: React.FC = () => {
   return (
-    <>
-      {/* Hero */}
+    <div className="home">
+      {/* Hero секция */}
       <section className="hero">
-        <div className="hero-bg" style={{ backgroundImage: 'url(/images/hero-facade.jpg)' }} />
+        <div className="hero-bg">
+          <img src="/images/photo-1.jpg" alt="Панорамное окно" />
+          <div className="hero-overlay" />
+        </div>
         <motion.div
           className="hero-content"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h1>SHEMBERG</h1>
-          <p>Premium Window Systems</p>
+          <h1 className="hero-title">
+            Окна и двери<br />
+            <span>нового поколения</span>
+          </h1>
+          <p className="hero-subtitle">
+            Архитектурное остекление для жилых и коммерческих объектов.
+            Немецкие технологии, российское производство.
+          </p>
+          <div className="hero-actions">
+            <Link to="/catalog" className="btn-primary">Каталог продукции</Link>
+            <Link to="/configurator" className="btn-outline">3D Конфигуратор</Link>
+          </div>
         </motion.div>
-        <div className="hero-scroll">
-          <span>Scroll</span>
-          <div className="hero-scroll-line" />
+      </section>
+
+      {/* Преимущества */}
+      <section className="advantages">
+        <div className="container">
+          <motion.h2
+            className="section-title"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            Почему Shemberg
+          </motion.h2>
+          <div className="advantages-grid">
+            {advantages.map(function(item, index) {
+              return (
+                <motion.div
+                  key={index}
+                  className="advantage-card"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.15 }}
+                >
+                  <span className="advantage-icon">{item.icon}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
-      {/* About */}
-      <motion.section
-        className="section"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-100px' }}
-        variants={fadeUp}
-      >
-        <span className="section-label">About Us</span>
-        <h2 className="section-title">Engineering Light,<br />Framing Views</h2>
-        <p className="section-text">
-          For over three decades, Shemberg has defined the standard in premium European
-          window and facade systems. From minimalist aluminum profiles to heritage timber
-          casements, every product is engineered for lasting beauty, thermal performance,
-          and architectural precision.
-        </p>
-      </motion.section>
-
-      {/* Features */}
-      <motion.section
-        className="section"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-100px' }}
-        variants={fadeUp}
-      >
-        <span className="section-label">Why Shemberg</span>
-        <h2 className="section-title">Built to Perform</h2>
-        <div className="features-grid">
-          <div className="feature-card">
-            <div className="feature-icon">&#9670;</div>
-            <h3>Thermal Excellence</h3>
-            <p>Industry-leading U-values down to 0.7 W/m2K. Multi-chamber profiles and warm-edge spacers minimize heat loss year-round.</p>
-          </div>
-          <div className="feature-card">
-            <div className="feature-icon">&#9674;</div>
-            <h3>Slim Sightlines</h3>
-            <p>Profiles as narrow as 20mm at the interlock. Maximum glass area for unobstructed views and natural daylight.</p>
-          </div>
-          <div className="feature-card">
-            <div className="feature-icon">&#9632;</div>
-            <h3>Custom Finishes</h3>
-            <p>Over 200 RAL colors, anodized finishes, and natural wood stains. Dual-color options for contrasting interior and exterior tones.</p>
+      {/* Витрина — 3 фото */}
+      <section className="showcase">
+        <div className="container">
+          <div className="showcase-grid">
+            <motion.div
+              className="showcase-item large"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+            >
+              <img src="/images/photo-5.jpg" alt="Остекление фасада" />
+              <div className="showcase-label">Фасадное остекление</div>
+            </motion.div>
+            <motion.div
+              className="showcase-item"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
+              <img src="/images/photo-8.jpg" alt="Интерьер" />
+              <div className="showcase-label">Интерьерные решения</div>
+            </motion.div>
+            <motion.div
+              className="showcase-item"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              <img src="/images/photo-11.jpg" alt="Раздвижные двери" />
+              <div className="showcase-label">Раздвижные системы</div>
+            </motion.div>
           </div>
         </div>
-      </motion.section>
+      </section>
 
-      {/* CTA */}
-      <motion.div
-        className="cta-banner"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-80px' }}
-        variants={fadeUp}
-      >
-        <h2>Design Your Window</h2>
-        <p>Use our configurator to explore frame types, glazing options, and finishes.</p>
-        <Link to="/configurator" className="btn-primary">Open Configurator</Link>
-      </motion.div>
-
-      {/* Stats */}
-      <motion.section
-        className="section"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-100px' }}
-        variants={fadeUp}
-        style={{ textAlign: 'center' as const }}
-      >
-        <div className="features-grid">
-          <div className="feature-card">
-            <h3 style={{ fontSize: '2.4rem', color: 'var(--accent)' }}>30+</h3>
-            <p>Years of experience in premium fenestration</p>
-          </div>
-          <div className="feature-card">
-            <h3 style={{ fontSize: '2.4rem', color: 'var(--accent)' }}>12,000+</h3>
-            <p>Projects delivered across Europe</p>
-          </div>
-          <div className="feature-card">
-            <h3 style={{ fontSize: '2.4rem', color: 'var(--accent)' }}>45</h3>
-            <p>Countries with authorized partners</p>
+      {/* CTA — форма заявки */}
+      <section className="cta-section">
+        <div className="container">
+          <div className="cta-grid">
+            <div className="cta-text">
+              <h2>Рассчитайте стоимость</h2>
+              <p>
+                Оставьте заявку, и наш инженер подготовит индивидуальный расчёт
+                с учётом особенностей вашего объекта.
+              </p>
+              <div className="cta-stats">
+                <div className="stat">
+                  <strong>1200+</strong>
+                  <span>объектов</span>
+                </div>
+                <div className="stat">
+                  <strong>10 лет</strong>
+                  <span>гарантия</span>
+                </div>
+                <div className="stat">
+                  <strong>7 дней</strong>
+                  <span>срок</span>
+                </div>
+              </div>
+            </div>
+            <QuoteForm />
           </div>
         </div>
-      </motion.section>
-    </>
+      </section>
+    </div>
   );
-};
+}
 
 export default Home;
