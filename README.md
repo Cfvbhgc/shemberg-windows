@@ -1,35 +1,38 @@
-# SHEMBERG — Premium Window Systems
+# SHEMBERG — Премиум оконные системы
 
-A premium European window catalog and configurator built with React + TypeScript.
+Каталог и конфигуратор премиальных окон и фасадных систем на React + TypeScript.
 
-## Features
+## Возможности
 
-- **Home** — Hero section with scroll-triggered animations and company overview
-- **Catalog** — Filterable masonry grid of window/door products with detail modals and Framer Motion layout transitions
-- **Configurator** — Interactive window builder with real-time SVG preview, frame/glass/color selection, and price calculation
-- **Gallery** — Before/after comparison sliders with drag handles for facade transformation projects
+- **Главная** — hero-секция с полноэкранным фото, преимущества, витрина продукции
+- **Каталог** — фильтруемая сетка окон и дверей (поворотные, раздвижные, глухие, откидные) с анимированными переходами
+- **Конфигуратор** — 3D-модель окна на Three.js: выбор профиля, цвета рамы и типа стекла в реальном времени, расчёт стоимости
+- **Галерея** — masonry-сетка реализованных объектов, слайдер сравнения «до/после» с перетаскиванием
+- Пошаговая форма заявки на расчёт с валидацией
+- Полная мобильная адаптация с бургер-меню
 
-## Tech Stack
+## Технологии
 
 - React 18 + TypeScript
-- React Router (client-side routing)
-- Framer Motion (animations and layout transitions)
-- SVG-based window configurator preview
-- Responsive design
+- React Router — клиентская маршрутизация
+- Three.js + React Three Fiber — 3D-конфигуратор
+- Framer Motion — анимации и layout-переходы
+- Google Fonts: Cormorant Garamond (заголовки) + Inter (текст)
 
-## Design
+## Дизайн
 
-- Fonts: Archivo (headings) + Instrument Sans (body)
-- Palette: White #fafafa, Charcoal #1a1a1a, Accent Blue #2563eb, Warm Gray #e8e4df
+- Бежевый: `#f5f0eb`
+- Тёмный: `#2a2a2a`
+- Акцент: `#8a8278`
 
-## Getting Started
+## Запуск
 
 ```bash
 npm install
 npm start
 ```
 
-## Build
+## Сборка
 
 ```bash
 npm run build
