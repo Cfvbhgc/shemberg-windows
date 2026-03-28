@@ -1,6 +1,6 @@
 // Компонент сравнения До/После с перетаскиванием
 
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 
 interface BeforeAfterProps {
   before: string;
@@ -13,43 +13,55 @@ function BeforeAfter({ before, after, title }: BeforeAfterProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
 
-  const handleMove = useCallback(function(clientX: number) {
-    if (!containerRef.current || !isDragging.current) return;
+  const updatePosition = useCallback(function(clientX: number) {
+    if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = clientX - rect.left;
     const percent = Math.max(0, Math.min(100, (x / rect.width) * 100));
     setPosition(percent);
   }, []);
 
-  function handleMouseDown() {
-    isDragging.current = true;
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
-  }
+  const handleMouseMove = useCallback(function(e: MouseEvent) {
+    if (!isDragging.current) return;
+    e.preventDefault();
+    updatePosition(e.clientX);
+  }, [updatePosition]);
 
-  function handleMouseMove(e: MouseEvent) {
-    handleMove(e.clientX);
-  }
-
-  function handleMouseUp() {
+  const handleMouseUp = useCallback(function() {
     isDragging.current = false;
     document.removeEventListener('mousemove', handleMouseMove);
     document.removeEventListener('mouseup', handleMouseUp);
-  }
+  }, [handleMouseMove]);
 
-  function handleTouchStart() {
+  const handleMouseDown = useCallback(function(e: React.MouseEvent) {
+    e.preventDefault();
     isDragging.current = true;
-  }
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+  }, [handleMouseMove, handleMouseUp]);
 
-  function handleTouchMove(e: React.TouchEvent) {
-    if (isDragging.current) {
-      handleMove(e.touches[0].clientX);
-    }
-  }
+  // Cleanup listeners on unmount
+  useEffect(function() {
+    return function() {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [handleMouseMove, handleMouseUp]);
 
-  function handleTouchEnd() {
+  const handleTouchStart = useCallback(function(e: React.TouchEvent) {
+    isDragging.current = true;
+    updatePosition(e.touches[0].clientX);
+  }, [updatePosition]);
+
+  const handleTouchMove = useCallback(function(e: React.TouchEvent) {
+    if (!isDragging.current) return;
+    e.preventDefault();
+    updatePosition(e.touches[0].clientX);
+  }, [updatePosition]);
+
+  const handleTouchEnd = useCallback(function() {
     isDragging.current = false;
-  }
+  }, []);
 
   return (
     <div className="before-after">
@@ -65,10 +77,10 @@ function BeforeAfter({ before, after, title }: BeforeAfterProps) {
         {/* Фото «После» — фон */}
         <img src={after} alt="После" className="before-after-img" />
 
-        {/* Фото «До» — обрезается */}
+        {/* Фото «До» — обрезается через clip-path */}
         <div
           className="before-after-overlay"
-          style={{ width: `${position}%` }}
+          style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
         >
           <img src={before} alt="До" className="before-after-img" />
         </div>
