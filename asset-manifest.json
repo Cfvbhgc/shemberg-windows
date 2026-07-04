@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/shemberg-windows/static/css/main.fcf0503b.css",
+    "main.js": "/shemberg-windows/static/js/main.af07c41d.js",
+    "index.html": "/shemberg-windows/index.html",
+    "main.fcf0503b.css.map": "/shemberg-windows/static/css/main.fcf0503b.css.map",
+    "main.af07c41d.js.map": "/shemberg-windows/static/js/main.af07c41d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fcf0503b.css",
+    "static/js/main.af07c41d.js"
+  ]
+}
