@@ -34,7 +34,7 @@ function Home() {
       {/* Hero секция */}
       <section className="hero">
         <div className="hero-bg">
-          <img src="/images/photo-1.jpg" alt="Панорамное окно" />
+          <img src="images/photo-1.jpg" alt="Панорамное окно" />
           <div className="hero-overlay" />
         </div>
         <motion.div
@@ -100,7 +100,7 @@ function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
             >
-              <img src="/images/photo-5.jpg" alt="Остекление фасада" />
+              <img src="images/photo-5.jpg" alt="Остекление фасада" />
               <div className="showcase-label">Фасадное остекление</div>
             </motion.div>
             <motion.div
@@ -110,7 +110,7 @@ function Home() {
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
             >
-              <img src="/images/photo-8.jpg" alt="Интерьер" />
+              <img src="images/photo-8.jpg" alt="Интерьер" />
               <div className="showcase-label">Интерьерные решения</div>
             </motion.div>
             <motion.div
@@ -120,7 +120,7 @@ function Home() {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              <img src="/images/photo-11.jpg" alt="Раздвижные двери" />
+              <img src="images/photo-11.jpg" alt="Раздвижные двери" />
               <div className="showcase-label">Раздвижные системы</div>
             </motion.div>
           </div>

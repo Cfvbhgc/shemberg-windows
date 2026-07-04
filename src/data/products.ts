@@ -18,7 +18,7 @@ const products: Product[] = [
     material: 'Алюминий',
     description: 'Панорамная раздвижная система с минимальным профилем. Идеально для террас и балконов.',
     price: 48000,
-    image: '/images/photo-1.jpg',
+    image: 'images/photo-1.jpg',
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ const products: Product[] = [
     material: 'Дерево',
     description: 'Классическое деревянное окно с современной фурнитурой. Натуральная теплота дерева.',
     price: 35000,
-    image: '/images/photo-2.jpg',
+    image: 'images/photo-2.jpg',
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ const products: Product[] = [
     material: 'ПВХ',
     description: 'Глухое энергосберегающее окно с тройным стеклопакетом. Максимальная теплоизоляция.',
     price: 22000,
-    image: '/images/photo-3.jpg',
+    image: 'images/photo-3.jpg',
   },
   {
     id: 4,
@@ -45,7 +45,7 @@ const products: Product[] = [
     material: 'Алюминий',
     description: 'Откидная система проветривания с автоматическим микропроветриванием.',
     price: 31000,
-    image: '/images/photo-4.jpg',
+    image: 'images/photo-4.jpg',
   },
   {
     id: 5,
@@ -54,7 +54,7 @@ const products: Product[] = [
     material: 'Алюминий',
     description: 'Окно в стиле лофт с чёрным алюминиевым профилем и промышленной расстекловкой.',
     price: 42000,
-    image: '/images/photo-5.jpg',
+    image: 'images/photo-5.jpg',
   },
   {
     id: 6,
@@ -63,7 +63,7 @@ const products: Product[] = [
     material: 'ПВХ',
     description: 'Раздвижная система с увеличенным световым проёмом. Тихий ход направляющих.',
     price: 38000,
-    image: '/images/photo-6.jpg',
+    image: 'images/photo-6.jpg',
   },
   {
     id: 7,
@@ -72,7 +72,7 @@ const products: Product[] = [
     material: 'ПВХ',
     description: 'Европейская поворотная система с функцией микропроветривания и детским замком.',
     price: 26000,
-    image: '/images/photo-7.jpg',
+    image: 'images/photo-7.jpg',
   },
   {
     id: 8,
@@ -81,7 +81,7 @@ const products: Product[] = [
     material: 'Дерево',
     description: 'Окно из массива дуба с энергосберегающим стеклопакетом. Премиальная отделка.',
     price: 65000,
-    image: '/images/photo-8.jpg',
+    image: 'images/photo-8.jpg',
   },
   {
     id: 9,
@@ -90,7 +90,7 @@ const products: Product[] = [
     material: 'ПВХ',
     description: 'Откидное окно с плавным механизмом открывания. Безопасность и комфорт.',
     price: 24000,
-    image: '/images/photo-9.jpg',
+    image: 'images/photo-9.jpg',
   },
   {
     id: 10,
@@ -99,7 +99,7 @@ const products: Product[] = [
     material: 'Алюминий',
     description: 'Фасадное остекление для коммерческих объектов. Структурный монтаж.',
     price: 55000,
-    image: '/images/photo-10.jpg',
+    image: 'images/photo-10.jpg',
   },
 ];
 
